@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
 import userRoutes from "./routes/user.routes.js";
-
+import cors from 'cors'
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import { app, server } from "./socket/socket.js";
 
@@ -21,6 +21,7 @@ app.use(cors({
     credentials: true,
     origin: ['https://mern-chat-app-master-97qp.vercel.app/login']
 }));
+
 app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
