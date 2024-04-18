@@ -16,9 +16,12 @@ const __dirname = path.resolve();
 
 dotenv.config();
 
-app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
+app.use(express.json());
+app.use(cors({
+    credentials: true,
+    origin: ['https://mern-chat-app-master-97qp.vercel.app/login']
+}));
 app.use(cookieParser());
-
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
